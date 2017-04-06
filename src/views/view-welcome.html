@@ -1,0 +1,55 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/id-panel/id-panel.html">
+<link rel="import" href="/bower_components/id-button/id-button.html">
+
+<dom-module id="view-welcome">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #continue-button {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+      }
+    </style>
+
+    <h1>Getting Started</h1>
+
+    <id-panel title="Here you can">
+      <ul>
+        <li>Send customers information on various things.</li>
+        <li>Notify customers about other various things.</li>
+        <li>Review things about various customers.</li>
+      </ul>
+    </id-panel>
+
+    <id-panel title="You will need">
+      <ul>
+        <li>Customer information and various things.</li>
+        <li>Access Idaho username and password.</li>
+        <li>Permission to use this site.</li>
+      </ul>
+    </id-panel>
+
+    <div id="continue-button">
+      <id-button class="btn-lg" on-button-click="continueToSignIn">Continue and Log In</id-button>
+    </div>
+  </template>
+
+  <script>
+    class ViewWelcome extends Polymer.Element {
+      static get is() { return 'view-welcome'; }
+      continueToSignIn() {
+        window.location = window.__env.base_url + "login/index";
+      }
+    }
+
+    window.customElements.define(ViewWelcome.is, ViewWelcome);
+  </script>
+</dom-module>

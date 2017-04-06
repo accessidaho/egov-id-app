@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Idaho Application</title>
+    <meta name="description" content="Idaho Application">
+
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" href="/images/manifest/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/manifest/favicon-16x16.png" sizes="16x16">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#2968c0">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Idaho Application">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Idaho Application">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/manifest/apple-touch-icon.png">
+    <link rel="mask-icon" href="/images/manifest/safari-pinned-tab.svg" color="#2968c0">
+
+    <!-- Load and register pre-caching Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
+
+    <!-- Set environment static variables -->
+    <script>
+      (function (window) {
+        window.__env = window.__env || {};
+        window.__env.base_url = 'https://preview-daniel.accessidaho.org/ai/polymer/';
+      }(this));
+    </script>
+
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i|Lato:400,700,400italic" rel="stylesheet" type="text/css">
+
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- Load your application shell -->
+    <link rel="import" href="/src/id-app.html">
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+      @-ms-viewport {
+        width: device-width;
+      }
+
+      html {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -ms-overflow-style: scrollbar;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 0.9rem;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #292b2c;
+        background: #073570;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <id-app></id-app>
+  </body>
+</html>

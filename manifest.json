@@ -1,0 +1,15 @@
+{
+  "name": "Idaho Application",
+  "short_name": "Idaho Application",
+  "start_url": "/?homescreen=1",
+  "display": "standalone",
+  "theme_color": "#2968c0",
+  "background_color": "#2968c0",
+  "icons": [
+      {
+          "src": "/images/manifest/android-chrome-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      }
+  ]
+}

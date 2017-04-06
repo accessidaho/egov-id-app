@@ -1,0 +1,24 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="view-callback">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+  </template>
+
+  <script>
+    class ViewCallback extends Polymer.Element {
+      static get is() { return 'view-callback'; }
+
+      ready() {
+        // window.location = '/#/next-page';
+      }
+    }
+
+    window.customElements.define(ViewCallback.is, ViewCallback);
+  </script>
+</dom-module>

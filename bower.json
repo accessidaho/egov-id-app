@@ -1,0 +1,30 @@
+{
+  "name": "id-app",
+  "authors": [
+    "Access Idaho"
+  ],
+  "dependencies": {
+    "app-route": "PolymerElements/app-route#2.0-preview",
+    "iron-localstorage": "PolymerElements/iron-localstorage#2.0-preview",
+    "iron-pages": "PolymerElements/iron-pages#2.0-preview",
+    "iron-selector": "PolymerElements/iron-selector#2.0-preview",
+    "polymer": "Polymer/polymer#^2.0.0-rc.2",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.4",
+    "id-app-navigation": "https://github.com/accessidaho/egov-id-app-navigation.git",
+    "id-app-layout": "https://github.com/accessidaho/egov-id-app-layout.git",
+    "id-button": "https://github.com/accessidaho/egov-id-button.git",
+    "id-datatable": "https://github.com/accessidaho/egov-id-datatable.git",
+    "id-utility": "https://github.com/accessidaho/egov-id-utility.git",
+    "id-panel": "https://github.com/accessidaho/egov-id-panel.git",
+    "id-alert": "https://github.com/accessidaho/egov-id-alert.git",
+    "id-form": "https://github.com/accessidaho/egov-id-form.git",
+    "font-awesome": "4.7.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "6.0.0-prerelease.5"
+  },
+  "private": true
+}

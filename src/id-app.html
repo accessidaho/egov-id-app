@@ -1,0 +1,114 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
+
+<link rel="import" href="/bower_components/id-utility/id-utility.html">
+<link rel="import" href="/bower_components/id-app-layout/id-app-layout.html">
+<link rel="import" href="/bower_components/id-app-navigation/id-app-navigation.html">
+
+<dom-module id="id-app">
+  <template>
+    <style include="id-app-layout-styles">
+      .container {
+        background: #fff;
+        box-shadow: 0 0 6px 6px rgba(0,0,0,.3);
+      }
+
+      iron-pages > * {
+        padding: 2rem 0;
+      }
+    </style>
+
+
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <id-utility></id-utility>
+
+    <div class="container">
+      <id-app-header background-image="/images/idaho-seal.png"></id-app-header>
+
+      <id-app-navigation page="{{page}}" items="[[nav_items]]" tabbed></id-app-navigation>
+
+      <iron-pages
+          selected="[[page]]"
+          attr-for-selected="name"
+          fallback-selection="view-404"
+          role="main">
+        <view-welcome name="welcome"></view-welcome>
+        <view-callback name="callback"></view-callback>
+        <view-404 name="404"></view-404>
+      </iron-pages>
+
+      <id-app-footer></id-app-footer>
+    </div>
+  </template>
+
+  <script>
+    class IdApp extends Polymer.Element {
+
+      static get is() { return 'id-app'; }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+          nav_items: {
+            type: Array,
+            value: [{id: 'welcome', title: 'Welcome', url: '/#/welcome'}]
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      ready() {
+        super.ready();
+        if (this.route.path === '') {
+          window.location = '/#/';
+        }
+      }
+
+      _routePageChanged(page) {
+        // Polymer 2.0 will call with `undefined` on initialization.
+        // Ignore until we are properly called with a string.
+        if (page === undefined) {
+          return;
+        }
+
+        // If no page was found in the route data, page will be an empty string.
+        // Deault to 'view1' in that case.
+        this.page = page || 'welcome';
+      }
+
+      _pageChanged(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('views/view-' + page + '.html');
+        Polymer.importHref(
+            resolvedPageUrl,
+            null,
+            this._showPage404.bind(this),
+            true);
+      }
+
+      _showPage404() {
+        this.page = '404';
+      }
+    }
+
+    window.customElements.define(IdApp.is, IdApp);
+  </script>
+</dom-module>

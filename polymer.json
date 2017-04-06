@@ -1,0 +1,28 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/id-app.html",
+  "fragments": [
+    "src/views/view-welcome.html",
+    "src/views/view-callback.html",
+    "src/views/view-404.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [{
+    "bundle": true,
+    "addServiceWorker": true,
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }]
+}
